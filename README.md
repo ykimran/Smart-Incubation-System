@@ -11,7 +11,7 @@ Built by **Imran Yakub** and **Md. Sayem Ur Rahman** for **EEE 3506 - Microproce
 - [Arduino sketch](firmware/SmartIncubation/SmartIncubation.ino), reconstructed from the report's code table.
 - [Original report PDF](docs/source/Project_Report.pdf) and [editable Word report](docs/source/Project_Report.docx).
 - Circuit diagram, flowcharts, Proteus screenshots, and hardware photos.
-- [Original demonstration video](media/demo.mp4) (download to play).
+- [Compressed demonstration video](media/demo-web.mp4) (download to play).
 - [Hardware and setup guide](docs/hardware.md), [control logic](docs/operation.md), and [source provenance](docs/provenance.md).
 
 **No original `.ino`, compiled firmware, or editable Proteus project was present in the ZIP.** The sketch here is a documented reconstruction, not a recovered original. Humidity is monitored only; no humidifier or humidity-control loop is implemented.

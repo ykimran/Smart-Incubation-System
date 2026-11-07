@@ -1,0 +1,14 @@
+{
+  "MPro_Project_Report_ET231035-37.pdf": "docs/source/Project_Report.pdf",
+  "MPro_Project_Report_ET231035-37.docx": "docs/source/Project_Report.docx",
+  "Ckt Diagram.png": "docs/images/circuit.png",
+  "Smart Incubation System Flowchart.png": "docs/images/system-flowchart.png",
+  "Flow Chart.png": "docs/images/flowchart.png",
+  "HW Fan ON.jpg": "docs/images/hardware-fan-on.jpg",
+  "HW Ideal Condition.jpg": "docs/images/hardware-idle.jpg",
+  "HW Light ON.jpg": "docs/images/hardware-light-on.jpg",
+  "Proteus Output Fan ON.png": "docs/images/proteus-fan-on.png",
+  "Proteus Output Ideal Condition.png": "docs/images/proteus-idle.png",
+  "Proteus Output Light ON.png": "docs/images/proteus-light-on.png",
+  "Smart Incubation System.mp4": "media/demo-web.mp4"
+}

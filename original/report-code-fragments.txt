@@ -1,0 +1,115 @@
+#include <Wire.h>
+
+#include <LiquidCrystal_I2C.h>
+
+#include <DFRobot_DHT11.h>
+
+LiquidCrystal_I2C lcd(0x27, 16, 2);  
+
+#define DHT11_PIN 2  
+
+DFRobot_DHT11 DHT;  
+
+#define BUZZER_PIN 4  
+#define BULB_RELAY_PIN 8  
+#define FAN_RELAY_PIN 9  
+
+#define BULB_ON_TEMP   34.5  
+#define BULB_OFF_TEMP  35  
+#define FAN_ON_TEMP    38.5  
+#define FAN_OFF_TEMP   37  
+
+bool bulbOn = false;  
+bool fanOn = false;  
+
+void setup() {
+  lcd.init();  
+  lcd.backlight();  
+
+pinMode(BULB_RELAY_PIN, OUTPUT);  
+pinMode(FAN_RELAY_PIN, OUTPUT);  
+pinMode(BUZZER_PIN, OUTPUT);  
+
+digitalWrite(BULB_RELAY_PIN, HIGH);  
+digitalWrite(FAN_RELAY_PIN, HIGH);  
+digitalWrite(BUZZER_PIN, LOW);  
+
+lcd.setCursor(0, 0);  
+lcd.print("Initializing...");  
+delay(1000);  
+
+lcd.clear();  
+lcd.setCursor(0, 0);  
+lcd.print("Smart Incubation");  
+lcd.setCursor(0, 1);  
+lcd.print("     System      ");  
+delay(2000);  
+
+lcd.clear();  
+lcd.setCursor(0, 0);  
+lcd.print("By,    ET231035 ");  
+lcd.setCursor(0, 1);  
+lcd.print("     & ET231037 ");  
+delay(2000);  
+
+void loop() {
+  DHT.read(DHT11_PIN);  
+  lcd.clear();  
+
+if (DHT.temperature == 255 || DHT.humidity == -1) {  
+
+lcd.setCursor(0, 0);  
+lcd.print("  Sensor Error");  
+digitalWrite(BULB_RELAY_PIN, HIGH);  
+digitalWrite(FAN_RELAY_PIN, HIGH);  
+bulbOn = false;  
+fanOn = false;  
+
+} else {
+   lcd.setCursor(0, 0);  
+   lcd.print("TEMP:");  
+   lcd.print(DHT.temperature);  
+   lcd.print((char)223);  // degree symbol  
+   lcd.print("C HUM:");  
+   lcd.print(DHT.humidity);  
+   lcd.print("%");  
+
+if (DHT.temperature <= BULB_ON_TEMP && !bulbOn) {
+   digitalWrite(BULB_RELAY_PIN, LOW);  
+   bulbOn = true;  
+
+digitalWrite(4, HIGH); delay(200);  
+digitalWrite(4, LOW); delay(200);  
+digitalWrite(4, HIGH); delay(200);  
+digitalWrite(4, LOW);  
+
+} else if (DHT.temperature >= BULB_OFF_TEMP && bulbOn) {
+   digitalWrite(BULB_RELAY_PIN, HIGH);  
+   bulbOn = false;  
+
+if (DHT.temperature > FAN_ON_TEMP && !fanOn) {
+   digitalWrite(FAN_RELAY_PIN, LOW);  
+   fanOn = true;  
+
+digitalWrite(4, HIGH); delay(200);  
+digitalWrite(4, LOW); delay(200);  
+digitalWrite(4, HIGH); delay(200);  
+digitalWrite(4, LOW); delay(200);  
+digitalWrite(4, HIGH); delay(200);  
+digitalWrite(4, LOW);  
+
+} else if (DHT.temperature <= FAN_OFF_TEMP && fanOn) {
+   digitalWrite(FAN_RELAY_PIN, HIGH);  
+   fanOn = false;  
+
+lcd.setCursor(0, 1);  
+if (DHT.temperature > FAN_ON_TEMP && fanOn) {
+    lcd.print("     Fan ON");  
+} else if (DHT.temperature <= BULB_ON_TEMP && bulbOn) {
+   lcd.print("    Light ON");  
+} else {
+   lcd.print("Ideal Condition!");  
+}
+
+   delay(2000);  
+}  
