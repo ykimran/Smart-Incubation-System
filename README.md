@@ -9,7 +9,7 @@ Built by **Imran Yakub** and **Md. Sayem Ur Rahman** for **EEE 3506 - Microproce
 ## What is included
 
 - [Arduino sketch](firmware/SmartIncubation/SmartIncubation.ino), reconstructed from the report's code table.
-- [Original report PDF](docs/source/Project_Report.pdf) and [editable Word report](docs/source/Project_Report.docx).
+- [Original report PDF](docs/source/Project_Report.pdf).
 - Circuit diagram, flowcharts, Proteus screenshots, and hardware photos.
 - [Compressed demonstration video](media/demo-web.mp4) (download to play).
 - [Hardware and setup guide](docs/hardware.md), [control logic](docs/operation.md), and [source provenance](docs/provenance.md).
@@ -25,13 +25,27 @@ Built by **Imran Yakub** and **Md. Sayem Ur Rahman** for **EEE 3506 - Microproce
 
 Each output retains its previous state between its thresholds (hysteresis). Settings reproduce the report and are not validated incubation recommendations. The DFRobot library supplies whole-degree temperature values, so fractional thresholds do not imply fractional measurement resolution.
 
+## Pin assignments
+
+| Component | Arduino Uno pin / setting |
+| --- | --- |
+| DHT11 data | D2 |
+| Buzzer | D4 |
+| Heating relay input | D8, active LOW |
+| Fan relay input | D9, active LOW |
+| 16x2 I2C LCD SDA | A4 |
+| 16x2 I2C LCD SCL | A5 |
+| LCD I2C address | `0x27` |
+
+See the [hardware and wiring guide](docs/hardware.md) for additional setup details.
+
 ## Open and upload
 
 1. Clone or download this repository.
 2. Open `firmware/SmartIncubation/SmartIncubation.ino` in Arduino IDE, keeping `control.h` in the same folder.
 3. Install **DFRobot_DHT11** and a **LiquidCrystal_I2C** implementation supporting `init()` and `backlight()`. `Wire` is included with the Arduino AVR core. Exact historical library versions were not supplied.
 4. Select **Arduino Uno** and the correct serial port.
-5. Check [pin assignments and relay polarity](docs/hardware.md). Verify the LCD address (`0x27` in the report).
+5. Check [pin assignments and relay polarity](#pin-assignments). Verify the LCD address (`0x27` in the report).
 6. Compile and upload. First test relay behavior with the heater disconnected.
 
 The supplied circuit shows a 220 V bulb. Mains wiring requires appropriate isolation, enclosure, protection, and qualified handling; use low-voltage test loads for initial verification.
