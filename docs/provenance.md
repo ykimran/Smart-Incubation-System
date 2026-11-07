@@ -4,7 +4,7 @@ Prepared from `Smart Incubation System-20261107T125823Z-1-001.zip` on 7 November
 
 ## Original files
 
-The PDF and DOCX project reports, circuit and flowchart images, three hardware photographs, three Proteus output screenshots are copied byte-for-byte with descriptive repository filenames. See [source-map.json](source-map.json) for exact original-to-repository mapping.
+The PDF project report, circuit and flowchart images, three hardware photographs, three Proteus output screenshots are copied byte-for-byte with descriptive repository filenames. See [source-map.json](source-map.json) for exact original-to-repository mapping.
 
 The authoritative project report is `MPro_Project_Report_ET231035-37`, titled **Smart Incubation System**, by Imran Yakub and Md. Sayem Ur Rahman. Original documents contain the supplied student names and IDs.
 
@@ -13,6 +13,8 @@ The authoritative project report is `MPro_Project_Report_ET231035-37`, titled **
 README and Markdown documentation are newly written summaries. `original/report-code-fragments.txt` is a text extraction of the first column of the report's Program table; it is not a standalone original sketch and preserves incomplete braces. `firmware/SmartIncubation/` is a newly reconstructed implementation. Changes are listed in [operation.md](operation.md). The native C++ control test is new.
 
 ## Excluded from publication
+
+- Word documents are excluded by the repository owner's publishing preference; the project report is provided as PDF.
 
 - `MPro_Project_Report_ET231003-04.pdf`: a different team's **Automated Poultry System**, not this project.
 - `Water quality monitor Micro Project A4 Design.pdf`: unrelated reference material.
