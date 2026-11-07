@@ -3,3 +3,8 @@
 *.elf
 *.o
 build/
+
+# Exclude Word documents from uploads
+*.[dD][oO][cC]
+*.[dD][oO][cC][xX]
+*.[dD][oO][cC][mM]
